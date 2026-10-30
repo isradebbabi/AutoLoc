@@ -1,0 +1,8 @@
+$kind: http-request
+url: "{{asiApiUrl}}/agences/{{deleteAgenceId}}"
+method: DELETE
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Suppression agence vide => 204', function () { pm.response.to.have.status(204); });
+order: 6000

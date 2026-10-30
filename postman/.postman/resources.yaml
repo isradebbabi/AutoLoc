@@ -1,0 +1,9 @@
+# Use this workspace to collaborate
+workspace:
+  id: 59d9d9b1-5825-4a77-8cc2-f9821f0a3858
+
+localResources:
+  collections:
+    - ../AutoLoc API
+  environments:
+    - ../AutoLoc - local.environment.yaml

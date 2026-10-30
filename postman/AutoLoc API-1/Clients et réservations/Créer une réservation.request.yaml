@@ -1,0 +1,21 @@
+$kind: http-request
+url: "{{baseUrl}}/reservations"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "dateDebut": "2026-11-01",
+      "dateFin": "2026-11-05",
+      "statut": "EN_ATTENTE",
+      "client": { "id": {{clientId}} },
+      "vehicule": { "id": {{vehiculeId}} }
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      var json = pm.response.json();
+      if (json.id) pm.collectionVariables.set('reservationId', json.id);
+order: 2000

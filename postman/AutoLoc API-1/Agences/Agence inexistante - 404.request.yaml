@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{baseUrl}}/agences/999999"
+method: GET
+scripts:
+  - type: afterResponse
+    code: pm.test('Status 404', function () { pm.response.to.have.status(404); });
+order: 4000

@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{baseUrl}}/vehicules/disponibles?ville=Tunis&categorie=CITADINE"
+method: GET
+queryParams:
+  ville: Tunis
+  categorie: CITADINE
+order: 3000

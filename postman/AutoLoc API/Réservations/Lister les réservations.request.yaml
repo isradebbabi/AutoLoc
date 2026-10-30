@@ -1,0 +1,8 @@
+$kind: http-request
+url: "{{asiApiUrl}}/reservations"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Liste réservations => 200', function () { pm.response.to.have.status(200); });
+order: 1000

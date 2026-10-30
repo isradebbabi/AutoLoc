@@ -1,0 +1,14 @@
+$kind: collection
+description: Tests de l'API REST AutoLoc avec Spring Boot et WAMP/MySQL.
+variables:
+  asiApiUrl: http://localhost:8081/api
+  baseUrl: http://localhost:8081/api
+  agenceId: "1"
+  vehiculeId: "1"
+  clientId: "1"
+  reservationId: "1"
+  contratId: "1"
+  employeId: "1"
+  equipementId: "1"
+  maintenanceId: "1"
+  paiementId: "1"

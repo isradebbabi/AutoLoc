@@ -1,0 +1,8 @@
+$kind: http-request
+url: "{{asiApiUrl}}/clients/{{clientId}}"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Consultation client => 200', function () { pm.response.to.have.status(200); });
+order: 3100

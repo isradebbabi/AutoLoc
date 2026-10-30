@@ -1,0 +1,20 @@
+$kind: http-request
+url: "{{asiApiUrl}}/agences/{{agenceId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "nom": "Agence Tunis Centre modifiée",
+      "ville": "Tunis",
+      "adresse": "20 avenue Habib Bourguiba",
+      "telephone": "+216 71 000 001"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Modification agence => 200', function () { pm.response.to.have.status(200); });
+      pm.test('Réponse JSON', function () { pm.response.to.be.json; });
+order: 4000

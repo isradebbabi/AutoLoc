@@ -1,0 +1,22 @@
+$kind: http-request
+url: "{{asiApiUrl}}/clients"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "nom": "Ben Ali",
+      "prenom": "Amine",
+      "email": "amine.benali@example.com",
+      "telephone": "+216 20 000 000",
+      "numPermis": "TN-123456"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Création client => 201', function () { pm.response.to.have.status(201); });
+      var json = pm.response.json();
+      if (json.id) pm.collectionVariables.set('clientId', json.id);
+order: 1000

@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{asiApiUrl}}/agences/{{agenceId}}/simuler?jours=2&offre=WEEKEND"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Simulation WEEKEND => 200', function () { pm.response.to.have.status(200); });
+      pm.test('Rapport textuel', function () { pm.expect(pm.response.text()).to.include('WEEKEND'); });
+order: 7100

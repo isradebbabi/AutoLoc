@@ -1,0 +1,20 @@
+$kind: http-request
+url: "{{asiApiUrl}}/clients/{{clientId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "nom": "Ben Ali",
+      "prenom": "Amine Modifié",
+      "email": "amine.benali@example.com",
+      "telephone": "+216 20 000 001",
+      "numPermis": "TN-123456"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Modification client => 200', function () { pm.response.to.have.status(200); });
+order: 3200

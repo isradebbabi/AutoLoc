@@ -1,0 +1,24 @@
+name: local
+values:
+  - key: asiApiUrl
+    value: 'http://localhost:8081/api'
+  - key: baseUrl
+    value: 'http://localhost:8081/api'
+  - key: agenceId
+    value: '1'
+  - key: vehiculeId
+    value: '1'
+  - key: clientId
+    value: '1'
+  - key: reservationId
+    value: '1'
+  - key: contratId
+    value: '1'
+  - key: employeId
+    value: '1'
+  - key: equipementId
+    value: '1'
+  - key: maintenanceId
+    value: '1'
+  - key: paiementId
+    value: '1'

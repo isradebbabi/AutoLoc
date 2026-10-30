@@ -1,0 +1,24 @@
+$kind: http-request
+url: "{{baseUrl}}/vehicules"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "immatriculation": "123 TUN 4567",
+      "marque": "Toyota",
+      "modele": "Yaris",
+      "categorie": "CITADINE",
+      "tarifJournalier": 120.00,
+      "statut": "DISPONIBLE",
+      "agence": { "id": {{agenceId}} }
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status 201', function () { pm.response.to.have.status(201); });
+      var json = pm.response.json();
+      if (json.id) pm.collectionVariables.set('vehiculeId', json.id);
+order: 1000

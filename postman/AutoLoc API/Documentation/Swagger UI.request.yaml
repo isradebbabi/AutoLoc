@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{asiApiUrl}}/swagger-ui.html"
+method: GET
+order: 2000

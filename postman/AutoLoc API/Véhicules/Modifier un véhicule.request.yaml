@@ -1,0 +1,22 @@
+$kind: http-request
+url: "{{asiApiUrl}}/vehicules/{{vehiculeId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "immatriculation": "123 TUN 4567",
+      "marque": "Toyota",
+      "modele": "Yaris Hybrid",
+      "categorie": "CITADINE",
+      "tarifJournalier": 135.00,
+      "statut": "DISPONIBLE",
+      "agence": { "id": {{agenceId}} }
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Modification véhicule => 200', function () { pm.response.to.have.status(200); });
+order: 3500

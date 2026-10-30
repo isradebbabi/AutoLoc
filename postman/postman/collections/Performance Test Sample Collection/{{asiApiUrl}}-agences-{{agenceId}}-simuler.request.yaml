@@ -1,0 +1,10 @@
+$kind: http-request
+name: "{{asiApiUrl}}/agences/{{agenceId}}/simuler"
+description: ""
+url: "{{asiApiUrl}}/agences"
+method: GET
+body:
+  type: graphql
+  content:
+    query: ""
+order: 2000

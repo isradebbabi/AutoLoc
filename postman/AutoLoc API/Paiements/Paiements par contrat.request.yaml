@@ -1,0 +1,8 @@
+$kind: http-request
+url: "{{asiApiUrl}}/paiements/contrat/{{contratId}}"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Paiements par contrat => 200', function () { pm.response.to.have.status(200); });
+order: 1200

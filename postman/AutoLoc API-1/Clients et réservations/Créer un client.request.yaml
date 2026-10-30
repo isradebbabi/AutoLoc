@@ -1,0 +1,21 @@
+$kind: http-request
+url: "{{baseUrl}}/clients"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "nom": "Ben Ali",
+      "prenom": "Amine",
+      "email": "amine.benali@example.com",
+      "telephone": "+216 20 000 000",
+      "numPermis": "TN-123456"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      var json = pm.response.json();
+      if (json.id) pm.collectionVariables.set('clientId', json.id);
+order: 1000

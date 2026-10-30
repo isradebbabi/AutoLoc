@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{asiApiUrl}}/agences/{{agenceId}}/simuler?jours=30&offre=LONGUE_DUREE"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Simulation LONGUE_DUREE => 200', function () { pm.response.to.have.status(200); });
+      pm.test('Rapport textuel', function () { pm.expect(pm.response.text()).to.include('LONGUE_DUREE'); });
+order: 7200

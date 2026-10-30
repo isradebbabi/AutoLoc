@@ -1,0 +1,21 @@
+$kind: http-request
+url: "{{asiApiUrl}}/employes"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "nom": "Trabelsi",
+      "prenom": "Sami",
+      "role": "AGENT",
+      "agence": { "id": {{agenceId}} }
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Création employé => 201', function () { pm.response.to.have.status(201); });
+      var json = pm.response.json();
+      if (json.id) pm.collectionVariables.set('employeId', json.id);
+order: 1100

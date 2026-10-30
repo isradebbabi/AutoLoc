@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{asiApiUrl}}/employes"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Liste employés => 200', function () { pm.response.to.have.status(200); });
+      pm.test('Réponse JSON', function () { pm.response.to.be.json; });
+order: 1000

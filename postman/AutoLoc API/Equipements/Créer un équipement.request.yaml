@@ -1,0 +1,16 @@
+$kind: http-request
+url: "{{asiApiUrl}}/equipements"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    { "libelle": "GPS intégré" }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Création équipement => 201', function () { pm.response.to.have.status(201); });
+      var json = pm.response.json();
+      if (json.id) pm.collectionVariables.set('equipementId', json.id);
+order: 1100
